@@ -1,7 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface ContainerProps {
   size?: 'small' | 'large';
+  path: string;
 }
 
 export const Container = styled.div<ContainerProps>`
@@ -30,6 +31,24 @@ export const Container = styled.div<ContainerProps>`
         &:hover {
           opacity: 0.6;
         }
+      }
+
+      a:first-child {
+        ${({ path }) =>
+          path === '/' &&
+          css`
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ff872c;
+          `}
+      }
+
+      a + a {
+        ${({ path }) =>
+          path === '/import' &&
+          css`
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ff872c;
+          `}
       }
     }
   }
